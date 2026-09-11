@@ -7,23 +7,22 @@
 import SwiftUI
 
 struct PantallaInicial: View{
-    @State var controlador_tamagochi: ControladorGeneral = ControladorGeneral()
+    @Environment(ControladorGeneral.self) var controlador_tamagochi
     
     @State var nombre_nuevo = ""
     
-    @State var nueva_vida = true
-    
     var body: some View{
+        
+        
         Text("Su nombre es: \(controlador_tamagochi.tamagochi.nombre)")
         
+        Text("Hambre: \(controlador_tamagochi.tamagochi.hambre)")
+        Text("Limpio: \(controlador_tamagochi.tamagochi.limpio)")
+        Text("Cansancio: \(controlador_tamagochi.tamagochi.cansancio)")
+        Text("Edad: \(controlador_tamagochi.tamagochi.edad)")
+        MascotaEsado()
         
-            if(controlador_tamagochi.tamagochi.esta_vivo){
-            Text("Tu tamagochi esta vivo.")
-        }
-        else {
-            Text("Esta muerto")
-        }
-        
+
         TextField("place: holder: Nombre nuevo de tu tamagochi", text: $nombre_nuevo)
         Button("cambiar nombre"){
             controlador_tamagochi.tamagochi.esta_vivo = true
@@ -43,9 +42,18 @@ struct PantallaInicial: View{
             }
         }
         
+        Button ("Actualizar tamagochi"){
+            controlador_tamagochi.actualizar_medidores()
+        }
+        
+        Button("Alimentar"){
+            controlador_tamagochi.alimentar()
+        }
+        
     }
 }
 
 #Preview {
     PantallaInicial()
+        .environment(ControladorGeneral())
 }
