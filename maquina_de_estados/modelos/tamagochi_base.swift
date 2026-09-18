@@ -14,4 +14,5 @@ struct Tamagochi{
     var cansancio: Int
     var limpio: Int
     var aburrido: Int
+    var enojado: Int
 }

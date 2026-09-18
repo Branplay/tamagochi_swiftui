@@ -23,7 +23,7 @@ class ControladorGeneral{
             self.tamagochi = Tamagochi(
                 nombre: "Ramiro", esta_vivo: true,
                 edad: 0, hambre: 150, cansancio: 160,
-                limpio: 50, aburrido: 50
+                limpio: 50, aburrido: 50, enojado: 50
             )
         }
     }
@@ -90,6 +90,22 @@ class ControladorGeneral{
         }
     }
     
+    func adormilar() -> Bool{
+        if tamagochi.esta_vivo{
+            tamagochi.cansancio -= 20
+            return true
+        }
+        return false
+    }
+    
+    func enojar() -> Bool{
+        if tamagochi.esta_vivo{
+            tamagochi.enojado -= 20
+            return true
+        }
+        return false
+    }
+    
     func alimentar() -> Bool{
         if tamagochi.esta_vivo{
             tamagochi.hambre -= 20
@@ -97,4 +113,14 @@ class ControladorGeneral{
         }
         return false
     }
+    
+    func entretener() -> Bool{
+        if tamagochi.esta_vivo{
+            tamagochi.aburrido -= 20
+            return true
+        }
+        return false
+    }
+    
+    
 }

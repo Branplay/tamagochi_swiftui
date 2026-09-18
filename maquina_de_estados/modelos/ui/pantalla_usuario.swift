@@ -50,6 +50,11 @@ struct PantallaInicial: View{
             controlador_tamagochi.alimentar()
         }
         
+        Button("Darle un sape"){
+            let comando = ComandoTamagochi.darle_un_sape
+            controlador_tamagochi.procesar_comando(comando)
+        }
+        
     }
 }
 
