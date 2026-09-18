@@ -14,6 +14,7 @@ struct MascotaEsado: View {
         case .Neutro:
             ZStack{
                 Rectangle()
+                    .fill(Color.clear)
                     Image("EstadoBNeutral")
                     .resizable()
                     .scaledToFit()
@@ -21,6 +22,7 @@ struct MascotaEsado: View {
         case .Hambriento:
             ZStack{
                 Rectangle()
+                    .fill(Color.clear)
                     Image("EstadoBHambriento")
                     .resizable()
                     .scaledToFit()
@@ -28,6 +30,7 @@ struct MascotaEsado: View {
         case .Inanicion:
             ZStack{
                 Rectangle()
+                    .fill(Color.clear)
                     Image("EstadoBAburrido")
                     .resizable()
                     .scaledToFit()
@@ -35,7 +38,16 @@ struct MascotaEsado: View {
         case .Muerto:
             ZStack{
                 Rectangle()
+                    .fill(Color.clear)
                     Image("EstadoBAsquiado")
+                    .resizable()
+                    .scaledToFit()
+            }
+        case .Adormilado:
+            ZStack{
+                Rectangle()
+                    .fill(Color.clear)
+                    Image("EstadoBSueno")
                     .resizable()
                     .scaledToFit()
             }
