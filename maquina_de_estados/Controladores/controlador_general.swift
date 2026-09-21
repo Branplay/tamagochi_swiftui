@@ -8,7 +8,7 @@ import Foundation
 
 @Observable ///
 class ControladorGeneral{
-    var tamagochi: Tamagochi
+    private var tamagochi: Tamagochi
     
     var estado: EstadosTamagochi = .Neutro
         

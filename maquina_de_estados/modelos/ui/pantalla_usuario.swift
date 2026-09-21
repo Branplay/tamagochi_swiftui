@@ -14,17 +14,12 @@ struct PantallaInicial: View{
     var body: some View {
         VStack(spacing: 20) {
             
-            // 📝 Información principal
             VStack(alignment: .leading, spacing: 8) {
                 Text("Tamagochi")
                     .font(.title)
                     .bold()
                 
-                Text("Nombre: \(controlador_tamagochi.tamagochi.nombre)")
-                Text("Hambre: \(controlador_tamagochi.tamagochi.hambre)")
-                Text("Limpio: \(controlador_tamagochi.tamagochi.limpio)")
-                Text("Cansancio: \(controlador_tamagochi.tamagochi.cansancio)")
-                Text("Edad: \(controlador_tamagochi.tamagochi.edad)")
+                Text("Estado: \(controlador_tamagochi.estado)")
             }
             .padding()
             .background(RoundedRectangle(cornerRadius: 12).fill(Color.blue.opacity(0.1)))
@@ -35,8 +30,17 @@ struct PantallaInicial: View{
                 TextField("Nombre nuevo de tu tamagochi", text: $nombre_nuevo)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
+                Button{
+                    controlador_tamagochi.cambiar_nombre(nombre_nuevo)
+                }
+                label: {
+                    vista_jjep(texto: "Cambia Nombre", imagen:  "Hola")
+                    .buttonStyle(.plain)
+                    .frame(height: 50)
+                    }
+                    
+                
                 Button("Cambiar nombre") {
-                    controlador_tamagochi.tamagochi.esta_vivo = true
                     controlador_tamagochi.cambiar_nombre(nombre_nuevo)
                 }
                 .buttonStyle(.borderedProminent)
@@ -45,7 +49,6 @@ struct PantallaInicial: View{
             
             VStack(spacing: 20) {
                 
-                // ⚔️ Acciones críticas
                 HStack(spacing: 16) {
                     Button(action: {
                         controlador_tamagochi.matar()
@@ -72,7 +75,6 @@ struct PantallaInicial: View{
                 
                 Divider()
                 
-                // 🍽️ Acciones de cuidado
                 VStack(spacing: 12) {
                     Button(action: {
                         controlador_tamagochi.actualizar_medidores()
