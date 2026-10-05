@@ -7,3 +7,22 @@
 
 import SwiftUI
 
+
+struct botones_pro : View {
+    var imagen: String
+    var texto: String
+
+    
+    var body : some View {
+        HStack {
+            Image(systemName: "hammer.fill")
+            Text("Dale con la pala")
+        }
+    .buttonStyle(.bordered)
+    .tint(.red)
+    }
+}
+
+#Preview {
+    botones_pro(imagen: "placeholder", texto: "placeholder")
+}

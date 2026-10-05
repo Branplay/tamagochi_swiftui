@@ -53,10 +53,7 @@ struct PantallaInicial: View{
                     Button(action: {
                         controlador_tamagochi.matar()
                     }) {
-                        HStack {
-                            Image(systemName: "hammer.fill")
-                            Text("Dale con la pala")
-                        }
+                        botones_pro(imagen: "hammer.fill", texto: "dale con la pala")
                     }
                     .buttonStyle(.bordered)
                     .tint(.red)
