@@ -1,64 +1,43 @@
-//
-//  mascota_estado_pantalla.swift
-//  maquina_de_estados
-//
-//  Created by alumno on 9/11/26.
-//
 import SwiftUI
 
 struct MascotaEsado: View {
     @Environment(ControladorGeneral.self) var mascota
-    
-    var body: some View {
-        switch (mascota.estado) {
-        case .Neutro:
-            ZStack{
-                Rectangle()
-                    .fill(Color.clear)
-                    Image("EstadoBNeutral")
-                    .resizable()
-                    .scaledToFit()
-            }
-        case .Hambriento:
-            ZStack{
-                Rectangle()
-                    .fill(Color.clear)
-                    Image("EstadoBHambriento")
-                    .resizable()
-                    .scaledToFit()
-            }
-        case .Inanicion:
-            ZStack{
-                Rectangle()
-                    .fill(Color.clear)
-                    Image("EstadoBAburrido")
-                    .resizable()
-                    .scaledToFit()
-            }
-        case .Muerto:
-            ZStack{
-                Rectangle()
-                    .fill(Color.clear)
-                    Image("EstadoBAsquiado")
-                    .resizable()
-                    .scaledToFit()
-            }
-        case .Adormilado:
-            ZStack{
-                Rectangle()
-                    .fill(Color.clear)
-                    Image("EstadoBSueno")
-                    .resizable()
-                    .scaledToFit()
-            }
 
+    // Propiedad calculada para resolver el nombre de la imagen según el estado
+    private var nombreImagen: String {
+        switch mascota.estado {
+        case .Neutro:
+            return "EstadoBNeutral"
+        case .Hambriento:
+            return "EstadoBHambriento"
+        case .Inanicion:
+            return "EstadoBAburrido"
+        case .Muerto:
+            return "EstadoBAsquiado"
+        case .Adormilado:
+            return "EstadoBSueno"
+        case .Comiendo:
+            return "EstadoBHambriento"
+        case .Enojado:
+            return "EstadoBEnojado"
+        case .Feliz:
+            return "EstadoBFeliz"
         default:
-            Text("No se que paso")
+            return "EstadoBNeutral"
         }
+    }
+
+    var body: some View {
+        Image(nombreImagen)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 160, height: 160)
+            .padding()
+            .animation(.easeInOut(duration: 0.2), value: mascota.estado)
     }
 }
 
-#Preview{
+#Preview {
     MascotaEsado()
         .environment(ControladorGeneral())
 }

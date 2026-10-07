@@ -6,117 +6,120 @@
 //
 import SwiftUI
 
-struct PantallaInicial: View{
+struct PantallaInicial: View {
     @Environment(ControladorGeneral.self) var controlador_tamagochi
     
     @State var nombre_nuevo = ""
     
     var body: some View {
-        VStack(spacing: 20) {
-            
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Tamagochi")
-                    .font(.title)
-                    .bold()
-                
-                Text("Estado: \(controlador_tamagochi.estado)")
-            }
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 12).fill(Color.blue.opacity(0.1)))
-            
-            MascotaEsado()
-            
-            VStack(spacing: 10) {
-                TextField("Nombre nuevo de tu tamagochi", text: $nombre_nuevo)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                Button{
-                    controlador_tamagochi.cambiar_nombre(nombre_nuevo)
-                }
-                label: {
-                    vista_jjep(texto: "Cambia Nombre", imagen:  "Hola")
-                    .buttonStyle(.plain)
-                    .frame(height: 50)
-                    }
-                    
-                
-                Button("Cambiar nombre") {
-                    controlador_tamagochi.cambiar_nombre(nombre_nuevo)
-                }
-                .buttonStyle(.borderedProminent)
-            }
-            .padding()
-            
+        ScrollView {
             VStack(spacing: 20) {
                 
-                HStack(spacing: 16) {
-                    Button(action: {
-                        controlador_tamagochi.matar()
-                    }) {
-                        botones_pro(imagen: "hammer.fill", texto: "dale con la pala")
-                    }
-                    .buttonStyle(.bordered)
-                    .tint(.red)
-                    
-                    Button(action: {
-                        controlador_tamagochi.revivir()
-                    }) {
-                        HStack {
-                            Image(systemName: "heart.fill")
-                            Text("Resucitar")
-                        }
+                // Encabezado del Estado
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Tamagochi")
+                        .font(.title)
+                        .bold()
+                    Text("Estado: \(controlador_tamagochi.estado)")
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(RoundedRectangle(cornerRadius: 12).fill(Color.blue.opacity(0.1)))
+
+                MascotaEsado()
+                
+                SeccionMedidores()
+                
+                VStack(spacing: 10) {
+                    TextField("Nombre nuevo de tu tamagochi", text: $nombre_nuevo)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                    Button("Cambiar nombre") {
+                        _ = controlador_tamagochi.cambiar_nombre(nombre_nuevo)
                     }
                     .buttonStyle(.borderedProminent)
-                    .tint(.green)
                 }
+                .padding()
                 
-                Divider()
-                
-                VStack(spacing: 12) {
-                    Button(action: {
-                        controlador_tamagochi.actualizar_medidores()
-                    }) {
-                        HStack {
-                            Image(systemName: "arrow.clockwise")
-                            Text("Actualizar")
-                        }
-                    }
-                    .buttonStyle(.bordered)
+                VStack(spacing: 20) {
                     
-                    Button(action: {
-                        controlador_tamagochi.alimentar()
-                    }) {
-                        HStack {
-                            Image(systemName: "fork.knife")
-                            Text("Alimentar")
+                    HStack(spacing: 16) {
+                        Button(action: {
+                            _ = controlador_tamagochi.matar()
+                        }) {
+                            botones_pro(imagen: "hammer.fill", texto: "dale con la pala")
                         }
+                        .buttonStyle(.bordered)
+                        .tint(.red)
+                        
+                        Button(action: {
+                            _ = controlador_tamagochi.revivir()
+                        }) {
+                            HStack {
+                                Image(systemName: "heart.fill")
+                                Text("Resucitar")
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.green)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.blue)
                     
-                    Button(action: {
-                        let comando = ComandoTamagochi.darle_un_sape
-                        controlador_tamagochi.procesar_comando(comando)
-                    }) {
-                        HStack {
-                            Image(systemName: "hand.wave.fill")
-                            Text("Darle un sape")
+                    Divider()
+                    
+                    VStack(spacing: 12) {
+                        Button(action: {
+                            _ = controlador_tamagochi.actualizar_medidores()
+                        }) {
+                            HStack {
+                                Image(systemName: "arrow.clockwise")
+                                Text("Actualizar")
+                            }
                         }
+                        .buttonStyle(.bordered)
+                        
+                        Button(action: {
+                            _ = controlador_tamagochi.alimentar()
+                        }) {
+                            HStack {
+                                Image(systemName: "fork.knife")
+                                Text("Alimentar")
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.blue)
+                        
+                        Button(action: {
+                            _ = controlador_tamagochi.darle_sape()
+                        }) {
+                            HStack {
+                                Image(systemName: "hand.wave.fill")
+                                Text("Darle un sape")
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.orange)
+                        
+                        Button(action: {
+                            _ = controlador_tamagochi.entretener()
+                        }) {
+                            HStack {
+                                Image(systemName: "gamecontroller.fill")
+                                Text("Entretener")
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.purple)
                     }
-                    .buttonStyle(.bordered)
-                    .tint(.orange)
                 }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.green.opacity(0.1))
+                )
             }
             .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.green.opacity(0.1))
-            )
-
         }
-        .padding()
     }
-
 }
 
 #Preview {
