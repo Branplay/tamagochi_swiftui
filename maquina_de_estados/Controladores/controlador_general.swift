@@ -2,11 +2,10 @@ import Foundation
 
 @Observable
 class ControladorGeneral {
-    private var tamagochi: Tamagochi
+        var tamagochi: Tamagochi
     
     var estado: EstadosTamagochi = .Neutro
     
-    // Encapsulamos el valor entre 0 y 100 en los getters y setters
     var hambre: Int {
         get { tamagochi.hambre }
         set { tamagochi.hambre = min(100, max(0, newValue)) }

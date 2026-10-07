@@ -15,12 +15,12 @@ struct PantallaInicial: View {
         ScrollView {
             VStack(spacing: 20) {
                 
-                // Encabezado del Estado
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Tamagochi")
                         .font(.title)
                         .bold()
                     Text("Estado: \(controlador_tamagochi.estado)")
+                    Text("Nombre: \(controlador_tamagochi.tamagochi.nombre)")
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -33,7 +33,9 @@ struct PantallaInicial: View {
                 VStack(spacing: 10) {
                     TextField("Nombre nuevo de tu tamagochi", text: $nombre_nuevo)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
+                    
+                    Divider()
+                    
                     Button("Cambiar nombre") {
                         _ = controlador_tamagochi.cambiar_nombre(nombre_nuevo)
                     }
@@ -47,21 +49,18 @@ struct PantallaInicial: View {
                         Button(action: {
                             _ = controlador_tamagochi.matar()
                         }) {
-                            botones_pro(imagen: "hammer.fill", texto: "dale con la pala")
+                            botonesPro(imagen: "hammer.fill", texto: "dale con la pala")
                         }
                         .buttonStyle(.bordered)
-                        .tint(.red)
+                        .tint(.rojito)
                         
                         Button(action: {
                             _ = controlador_tamagochi.revivir()
                         }) {
-                            HStack {
-                                Image(systemName: "heart.fill")
-                                Text("Resucitar")
-                            }
+                            botonesPro(imagen: "heart.fill", texto: "Resucitar")
                         }
                         .buttonStyle(.borderedProminent)
-                        .tint(.green)
+                        .tint(.verdesito)
                     }
                     
                     Divider()
@@ -70,42 +69,30 @@ struct PantallaInicial: View {
                         Button(action: {
                             _ = controlador_tamagochi.actualizar_medidores()
                         }) {
-                            HStack {
-                                Image(systemName: "arrow.clockwise")
-                                Text("Actualizar")
-                            }
+                            botonesPro(imagen: "arrow.clockwise", texto: "Actualizar")
                         }
                         .buttonStyle(.bordered)
                         
                         Button(action: {
                             _ = controlador_tamagochi.alimentar()
                         }) {
-                            HStack {
-                                Image(systemName: "fork.knife")
-                                Text("Alimentar")
-                            }
+                            botonesPro(imagen: "fork.knife", texto: "Alimentar")
                         }
                         .buttonStyle(.borderedProminent)
-                        .tint(.blue)
+                        .tint(.azulProPlus)
                         
                         Button(action: {
                             _ = controlador_tamagochi.darle_sape()
                         }) {
-                            HStack {
-                                Image(systemName: "hand.wave.fill")
-                                Text("Darle un sape")
-                            }
+                            botonesPro(imagen: "hand.wave.fill", texto: "Darle un sape")
                         }
                         .buttonStyle(.bordered)
-                        .tint(.orange)
+                        .tint(.naranjaEM)
                         
                         Button(action: {
                             _ = controlador_tamagochi.entretener()
                         }) {
-                            HStack {
-                                Image(systemName: "gamecontroller.fill")
-                                Text("Entretener")
-                            }
+                            botonesPro(imagen: "gamecontroller.fill", texto: "Entretener")
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(.purple)

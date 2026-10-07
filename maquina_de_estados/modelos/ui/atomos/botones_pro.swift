@@ -8,15 +8,15 @@
 import SwiftUI
 
 
-struct botones_pro : View {
+struct botonesPro : View {
     var imagen: String
     var texto: String
 
     
     var body : some View {
         HStack {
-            Image(systemName: "hammer.fill")
-            Text("Dale con la pala")
+            Image(systemName: imagen)
+            Text(texto)
         }
     .buttonStyle(.bordered)
     .tint(.red)
@@ -24,5 +24,5 @@ struct botones_pro : View {
 }
 
 #Preview {
-    botones_pro(imagen: "placeholder", texto: "placeholder")
+    botonesPro(imagen: "placeholder", texto: "placeholder")
 }

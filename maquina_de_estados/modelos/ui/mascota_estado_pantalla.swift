@@ -3,7 +3,6 @@ import SwiftUI
 struct MascotaEsado: View {
     @Environment(ControladorGeneral.self) var mascota
 
-    // Propiedad calculada para resolver el nombre de la imagen según el estado
     private var nombreImagen: String {
         switch mascota.estado {
         case .Neutro:

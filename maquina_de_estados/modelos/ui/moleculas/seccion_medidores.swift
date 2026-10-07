@@ -20,13 +20,13 @@ struct SeccionMedidores: View {
 
             BarraEstado(
                 titulo: "Hambre",
-                color: .orange,
+                color: .naranjaEM,
                 valor: $controladorBindable.hambre
             )
 
             BarraEstado(
                 titulo: "Cansancio",
-                color: .blue,
+                color: .azulProPlus,
                 valor: $controladorBindable.cansancio
             )
 
@@ -38,7 +38,7 @@ struct SeccionMedidores: View {
 
             BarraEstado(
                 titulo: "Higiene",
-                color: .green,
+                color: .verdesito,
                 valor: $controladorBindable.limpio
             )
         }
